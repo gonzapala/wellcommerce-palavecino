@@ -1,0 +1,137 @@
+/* Basic styling */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+nav {
+    background: #222;
+    padding: 5px 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.logo a:hover {
+    text-decoration: none;
+}
+
+.menu li {
+    font-size: 16px;
+    padding: 15px 5px;
+    white-space: nowrap;
+}
+
+.logo a,
+.toggle a {
+    font-size: 20px;
+}
+
+.button.secondary {
+    border-bottom: 1px #444 solid;
+}
+
+/* Mobile menu */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle {
+    order: 1;
+}
+
+.item.button {
+    order: 2;
+}
+
+.item {
+    width: 100%;
+    text-align: center;
+    order: 3;
+    display: none;
+}
+
+.item.active {
+    display: block;
+}
+
+/* Desktop menu */
+@media all and (min-width: 900px) {
+    .item {
+        display: block;
+        width: auto;
+    }
+
+    .toggle {
+        display: none;
+    }
+
+    .logo {
+        order: 0;
+    }
+
+    .item {
+        order: 1;
+    }
+
+    .button {
+        order: 2;
+    }
+
+    .menu li {
+        padding: 15px 10px;
+    }
+
+    .menu li.button {
+        padding-right: 0;
+    }
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav .item{
+    padding: 15px 10px;
+}
+.nav a{
+    text-decoration: none;
+}
+
+.nav .item.logo-content{
+    display: flex;
+    width: 200px;
+    padding: 0 10px;
+    align-items: center;
+}
+.nav .item .logo{
+    height: 40px;
+    animation: App-logo-spin infinite 20s linear;
+}
+
+.nav .item.button{
+    border-radius: 15px;
+    border: 1px solid white;
+    padding: 10px;
+}
