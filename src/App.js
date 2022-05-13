@@ -1,9 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-// import { useEffect } from 'react';
 
-import Navbar from './components/navBar';
-
+import Navbar from './components/NavBar';
+// import SumarContainer from './components/SumarContainer';
+import ItemListContainer from './components/ItemListContainer';
 function App() {
 	
 	return (
@@ -12,18 +11,12 @@ function App() {
 				<Navbar />
 			</header>
 			<section>
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
+				{/* <SumarContainer a={10} b={5}/> */}
+				<h1>
+					Wellcomerce
+				</h1>
+				<ItemListContainer />
+				
 			</section>
 		</div>
 	);

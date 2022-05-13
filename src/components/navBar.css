@@ -119,7 +119,7 @@ a:hover {
     text-decoration: none;
 }
 
-.nav .item.logo-content{
+.nav .item.logo-container{
     display: flex;
     width: 200px;
     padding: 0 10px;
@@ -134,4 +134,12 @@ a:hover {
     border-radius: 15px;
     border: 1px solid white;
     padding: 10px;
+}
+.nav .item.buttons-container{
+    padding: 0 10px;
+    align-items: center;
+}
+
+.button{
+    margin-right: 1em;
 }

@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.d-flex{
+  display: flex;
+}
+
+.btn{
+  border-radius: 25px;
+  border: 1px solid white;
+  padding: 10px;
+  background-color: #4caf50;
+  border-color: #43a047;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 1em;
+}
