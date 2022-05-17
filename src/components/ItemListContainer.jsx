@@ -5,7 +5,24 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 export default function ItemListContainer() {
-
+// let products = [
+    //   {
+    //     id: 1001,
+    //     name: 'Prod 1',
+    //     text: 'Text ',
+    //     stock: 10
+          // img: 'https://static.dafiti.com.ar/p/shaffe-co-4256-500609-1-product.jpg'
+    //     // price: 1280,25
+    //   },
+    //   {
+    //     id: 1001,
+    //     name: 'Prod 1',
+    //     text: 'Text ',
+    // img: 'https://static.dafiti.com.ar/p/shaffe-co-2290-970609-1-product.jpg'
+    //     // price: 1280,25
+    //     stock: 20
+    //   }
+    // ];
   const [cart, setCart] = useState(0)
   
   function onAdd(cant){
