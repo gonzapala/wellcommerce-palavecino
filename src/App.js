@@ -1,5 +1,5 @@
 import './App.css';
-
+import './bootstrap.min.css'
 import Navbar from './components/NavBar';
 // import SumarContainer from './components/SumarContainer';
 import ItemListContainer from './components/ItemListContainer';
@@ -16,7 +16,6 @@ function App() {
 					Wellcomerce
 				</h1>
 				<ItemListContainer />
-				
 			</section>
 		</div>
 	);
