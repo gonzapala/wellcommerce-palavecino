@@ -1,0 +1,9 @@
+.img-container{
+    position: relative;
+}
+.disponibles{
+    position: absolute;
+    right: 1%;
+    top: 1%;
+    --bs-bg-opacity: .5;
+}

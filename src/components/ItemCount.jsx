@@ -1,5 +1,6 @@
 //@ts-check
 import React, { useState } from "react";
+import './ItemCount.css'
 
 export default function ItemCount({ stock, initial, onAdd }) {
 	const [itemCount, setItemCount] = useState(initial);
@@ -47,27 +48,22 @@ export default function ItemCount({ stock, initial, onAdd }) {
 	}
 	return (
 		<>
-			<div>
-				<p className="badge bg-secondary">Solo quedan {stock} disponibles</p><br></br>
-				<img src="https://static.dafiti.com.ar/p/shaffe-co-2290-970609-1-product.jpg" 
-					style={{width: 250}} alt="" />
-				<p>
-					Remera Roja <span className="badge rounded-pill text-bg-light	">Talle L</span>
-					<br></br>
-				</p>
-			</div>
-			<div>
-				<button className="btn btn-info"
-					onClick={removeElement}
-					disabled={itemCount <= 0}> - </button>
-
-				<input  type="number" min="0" max={stock}
-					value={itemCount}
-					onInput={evt => handleChange(evt.target)}/>
-
-				<button className="btn btn-info" 
-					onClick={addElement}
-					disabled={itemCount >= stock}> + </button>
+			
+			<div className="w80 m-auto">
+				<form>
+				<div className="input-group">
+					<button className="btn btn-outline-secondary" type="button" id="button-addon1"
+						onClick={removeElement}
+						disabled={itemCount <= 0}> - </button>
+					<input type="number" min="0" max={stock}
+					 	className="form-control"
+						value={itemCount}
+						onInput={evt => handleChange(evt.target)}  />
+					<button className="btn btn-outline-secondary" type="button" id="button-addon2"
+						onClick={addElement}
+						disabled={itemCount >= stock}> + </button>
+				</div>
+				</form>
 			</div>
 
 			<button className="btn btn-info" 
