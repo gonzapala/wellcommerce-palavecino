@@ -21,14 +21,15 @@ export default function Item({item, countItem}) {
                 <div className="card-body p-0 pb-3">
                     <div className="img-container">
                         <p className="badge bg-secondary disponibles">Solo quedan {item.stock} disponibles</p>
-                        <img src={item.img} className='w-100' alt={item.text} />
+                        <img src={item.pictureUrl} className='w-100' alt={item.description} />
                     </div>
                     <div className="details">
-                        <p className='p-3'>
-                            {item.name} <span className="badge rounded-pill text-bg-light	">Talle {item.talle}</span>
-                            <br></br>
+                        <p className='pt-3'>
+                            {item.title} <span className="badge rounded-pill text-bg-light	">Talle {item.talle}</span>
                         </p>
-                        <a className='btn btn-sm btn-primary'>Ver Detalle</a>
+                        <p>{item.description}</p>
+                        <h4 className=''>${item.price}</h4>
+                        <a className='btn btn-sm btn-primary' href="#">Ver Detalle</a>
                         <ItemCount stock={item.stock} initial="1" onAdd={onAdd} />
                         <p className="text-secondary">
                             <span className={`badge rounded-pill ${count > 0 ? "bg-success" : "bg-secondary"}`}>

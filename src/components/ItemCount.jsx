@@ -70,8 +70,8 @@ export default function ItemCount({ stock, initial, onAdd }) {
 				onClick={() => add()}
 				disabled={itemCount === 0 || stock === 0}
 			> Agregar </button>
-			<button className="btn btn-outline-info" 
-				onClick={remove}> Quitar </button>
+			{/* <button className="btn btn-outline-info" 
+				onClick={remove}> Quitar </button> */}
 			
 		</>
 	);
