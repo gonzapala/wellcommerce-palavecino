@@ -1,7 +1,6 @@
 import './App.css';
 import './bootstrap.min.css'
 import Navbar from './components/NavBar';
-// import SumarContainer from './components/SumarContainer';
 import ItemListContainer from './components/ItemListContainer';
 function App() {
 	
@@ -11,7 +10,6 @@ function App() {
 				<Navbar />
 			</header>
 			<section>
-				{/* <SumarContainer a={10} b={5}/> */}
 				<h1>
 					Wellcomerce
 				</h1>
