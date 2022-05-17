@@ -5,7 +5,8 @@ import ItemList from './ItemList';
 
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
+import Loader from './shared/Loader';
+import { products } from './data/data.js'
 
 export default function ItemListContainer() {
 	const [listado, setListado] = useState([]);
@@ -15,46 +16,25 @@ export default function ItemListContainer() {
 	function fetchListado() {
 		setLoading(true);
 		setError("");
+
+		fetch("https://gestory-api.herokuapp.com/api/catalogo/products/35")
+			.then((res) => res.json())
+			.then((res) => {
+				if (res) {
+					setListado(res);
+					console.log(res)
+				}else{
+					throw new Error('Ocurrió un error.')
+				}
+			})
+			.catch((error) => {
+				setError(error);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
 	}
 
-	const products = [
-		{
-			id: 1,
-			title: 'Remera Roja',
-			description: 'Remera Roja 100% algodón. ',
-			price: 1280.25,
-			stock: 10,
-			talle: 'M',
-			pictureUrl: 'https://static.dafiti.com.ar/p/shaffe-co-2290-970609-1-product.jpg',
-		},
-		{
-			id: 2,
-			title: 'Remera negra',
-			description: 'Remera negra 100% algodón.',
-			price: 1289.99,
-			stock: 15,
-			talle: 'S',
-			pictureUrl: 'https://static.dafiti.com.ar/p/shaffe-co-4256-500609-1-product.jpg',
-		},
-		{
-			id: 2,
-			title: 'Remera Blanca',
-			description: 'Remera Blanca 100% algodón.',
-			price: 1289.99,
-			stock: 2,
-			talle: 'S',
-			pictureUrl: 'https://static.dafiti.com.ar/p/vinson-3430-394413-1-product.jpg',
-		},
-		{
-			id: 2,
-			title: 'Remera Azul',
-			description: 'Remera Azul 100% algodón.',
-			price: 1289.99,
-			stock: 7,
-			talle: 'S',
-			pictureUrl: 'https://static.dafiti.com.ar/p/vinson-7929-494413-1-product.jpg',
-		},
-	];
 
 	const trearListado = new Promise((res, rej) => {
 		setTimeout(() => {
@@ -63,22 +43,22 @@ export default function ItemListContainer() {
 	});
 	console.log(trearListado);
 
-	trearListado
-		.then((result) => {
-			setListado(result);
-		})
-		.catch((error) => {
-			setError(error);
-		})
-		.finally(() => {
-			setLoading(false);
-		});
+	// trearListado
+	// 	.then((result) => {
+	// 		setListado(result);
+	// 	})
+	// 	.catch((error) => {
+	// 		setError(error);
+	// 	})
+	// 	.finally(() => {
+	// 		setLoading(false);
+	// 	});
 
-	//esto es cuando arranca el componente
+	//se ejecuta cuando se monta el componente
 	useEffect(() => {
 		fetchListado();
-		}, []);
-	
+	}, []);
+
 
 	const [cart, setCart] = useState(0)
 	function countItems(cant) {
@@ -92,26 +72,29 @@ export default function ItemListContainer() {
 		setCart(0)
 	}
 
+
+
+
 	return (
 		<div className="container" style={{ padding: 50 }}>
 
 			<div className='text-right d-none'>
 				<button className='btn btn-sm btn-outline-primary pull-right' onClick={() => fetchListado()}>
-				{loading ? "Loading..." : "Refresh"}
+					{loading ? "Loading..." : "Refresh"}
 				</button>
 				{error && "Error al cargar listado"}
 			</div>
 
-			{loading ? "Loading..." : 
-				listado && 
-				<ItemList 
+			{loading ? <Loader/> :
+				listado &&
+				<ItemList
 					items={listado}
 					countItems={countItems}
 				/>
 			}
-			
+
 			{error && <p>"Error al cargar listado"</p>}
-			
+
 
 			<hr />
 			<p className="text-secondary">
@@ -122,7 +105,7 @@ export default function ItemListContainer() {
 				</span>
 				&nbsp; prendas en el carrito
 			</p>
-			<button className="btn btn-sm btn-outline-info" 
+			<button className="btn btn-sm btn-outline-info"
 				onClick={cleanCart}> Vaciar Carrito </button>
 		</div>
 	)

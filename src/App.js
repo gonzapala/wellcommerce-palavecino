@@ -2,6 +2,8 @@ import './App.css';
 import './bootstrap.min.css'
 import Navbar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
+import ItemDetailContainer from './components/product/ItemDetailContainer';
+
 function App() {
 	
 	return (
@@ -11,8 +13,9 @@ function App() {
 			</header>
 			<section>
 				<h1>
-					Wellcomerce
+					Wellcommerce
 				</h1>
+				<ItemDetailContainer itemId={2} />
 				<ItemListContainer />
 			</section>
 		</div>

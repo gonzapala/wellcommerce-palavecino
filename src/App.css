@@ -55,4 +55,12 @@
 
 section{
   background-color: #fafafa;
+  padding: 5em 3em;
+}
+
+.btn-primary{
+  background-color: #92B4EC!important;
+  border-color: #92b4ec!important;
+  /* 92B4EC */
+  /* FFD24C */
 }
