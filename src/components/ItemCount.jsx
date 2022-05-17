@@ -42,10 +42,10 @@ export default function ItemCount({ stock, initial, onAdd }) {
 		onAdd(itemCount);
 	}
 
-	function remove() {
-		setItemCount(0)
-		onAdd(0);
-	}
+	// function remove() {
+	// 	setItemCount(0)
+	// 	onAdd(0);
+	// }
 	return (
 		<>
 

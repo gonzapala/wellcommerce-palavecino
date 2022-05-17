@@ -6,12 +6,13 @@ import ItemList from './ItemList';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Loader from './shared/Loader';
-import { products } from './data/data.js'
+// import { products } from './data/data.js'
 
 export default function ItemListContainer() {
 	const [listado, setListado] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
+
 
 	function fetchListado() {
 		setLoading(true);
@@ -23,7 +24,7 @@ export default function ItemListContainer() {
 				if (res) {
 					setListado(res);
 					console.log(res)
-				}else{
+				} else {
 					throw new Error('Ocurrió un error.')
 				}
 			})
@@ -33,30 +34,32 @@ export default function ItemListContainer() {
 			.finally(() => {
 				setLoading(false);
 			});
-	}
-
-
-	const trearListado = new Promise((res, rej) => {
-		setTimeout(() => {
-			res(products);
-		}, 2000);
-	});
-	console.log(trearListado);
-
-	// trearListado
-	// 	.then((result) => {
-	// 		setListado(result);
-	// 	})
-	// 	.catch((error) => {
-	// 		setError(error);
-	// 	})
-	// 	.finally(() => {
-	// 		setLoading(false);
-	// 	});
+		}
 
 	//se ejecuta cuando se monta el componente
 	useEffect(() => {
+			
 		fetchListado();
+
+		// obtener datos locales
+		// const trearListado = new Promise((res, rej) => {
+		// 	setTimeout(() => {
+		// 		res(products);
+		// 	}, 2000);
+		// });
+		// console.log(trearListado);
+
+		// trearListado
+		// 	.then((result) => {
+		// 		setListado(result);
+		// 	})
+		// 	.catch((error) => {
+		// 		setError(error);
+		// 	})
+		// 	.finally(() => {
+		// 		setLoading(false);
+		// 	});
+
 	}, []);
 
 
@@ -85,7 +88,7 @@ export default function ItemListContainer() {
 				{error && "Error al cargar listado"}
 			</div>
 
-			{loading ? <Loader/> :
+			{loading ? <Loader /> :
 				listado &&
 				<ItemList
 					items={listado}

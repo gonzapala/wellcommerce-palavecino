@@ -13,10 +13,9 @@ export default function ItemList({ items, countItems }) {
             <div className="row">
             {listado &&
                 listado.map((item, i) => (
-                    // <p key={i}>
-                        
+                    <div className='col-3' key={i}>
                         <Item item={item} countItem={countItem}></Item>
-                    // </p>
+                    </div>
                 ))}
             </div>
         </>

@@ -2,38 +2,44 @@
 import React, { useEffect, useState } from 'react'
 import ItemDetail from './ItemDetail';
 import Loader from '../shared/Loader';
-import {products} from '../data/data.js';
+import { products } from '../data/data.js';
 
-export default function ItemDetailContainer({itemId}) {
-    const [item, setItem] = useState({  id: null,
+export default function ItemDetailContainer({ itemId }) {
+    const [item, setItem] = useState({
+        id: null,
         title: '',
         description: '',
         price: null,
         stock: null,
         talle: '',
-        pictureUrl: ''})
+        pictureUrl: ''
+    })
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
-    function find(id){
+    function find(id) {
         return products.find(item => item.id === id)
     }
 
     function fetchItem() {
         setLoading(true);
         setError("");
+      
     }
-    const getItem = new Promise((res, rej) => {
-        setTimeout(() => {
-            res(find(itemId));
-        }, 3000);
-    });
-    console.log(getItem);
+    //se ejecuta cuando se monta el componente
+    useEffect(() => {
+        // uso en lugar de fetch
+        const getItem = new Promise((res, rej) => {
+            setTimeout(() => {
+                res(find(itemId));
+            }, 2000);
+        });
+        console.log(getItem);
 
-    getItem
+        getItem
         .then((result) => {
-            setItem({ 
+            setItem({
                 id: result.id,
                 title: result.title,
                 description: result.description,
@@ -50,18 +56,17 @@ export default function ItemDetailContainer({itemId}) {
             setLoading(false);
         });
 
-    //se ejecuta cuando se monta el componente
-    useEffect(() => {
         fetchItem();
     }, []);
 
 
     return (
         <>
-			{loading ? <Loader/> : 
-				item && 
-                <ItemDetail item={item}/>
-			}
+            {loading ? <Loader /> :
+                item &&
+                <ItemDetail item={item} />
+            }
+            {error && <p>"Error al cargar producto, vuelva a intentar."</p>}
         </>
     )
 }
