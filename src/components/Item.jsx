@@ -30,7 +30,7 @@ export default function Item({ item, countItem }) {
                         <p>{item.descripcion}</p>
                         <h4 className=''>${item.precio}</h4>
                         <a className='btn btn-sm btn-primary' href="www.google.com">Ver Detalle</a>
-                        <ItemCount stock={item.stock} initial="1" onAdd={onAdd} />
+                        {/* <ItemCount stock={item.stock} initial="1" onAdd={onAdd} /> */}
                         <p className="text-secondary">
                             <span className={`badge rounded-pill ${count > 0 ? "bg-success" : "bg-secondary"}`}>
                                 {count}
