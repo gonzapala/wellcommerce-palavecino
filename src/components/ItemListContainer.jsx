@@ -34,11 +34,11 @@ export default function ItemListContainer() {
 			.finally(() => {
 				setLoading(false);
 			});
-		}
+	}
 
 	//se ejecuta cuando se monta el componente
 	useEffect(() => {
-			
+
 		fetchListado();
 
 		// obtener datos locales
@@ -79,38 +79,41 @@ export default function ItemListContainer() {
 
 
 	return (
-		<div className="container" style={{ padding: 50 }}>
+		<>
+			<h1>Wellcommerce</h1>
+			<div className="container" style={{ padding: 50 }}>
 
-			<div className='text-right d-none'>
-				<button className='btn btn-sm btn-outline-primary pull-right' onClick={() => fetchListado()}>
-					{loading ? "Loading..." : "Refresh"}
-				</button>
-				{error && "Error al cargar listado"}
+				<div className='text-right d-none'>
+					<button className='btn btn-sm btn-outline-primary pull-right' onClick={() => fetchListado()}>
+						{loading ? "Loading..." : "Refresh"}
+					</button>
+					{error && "Error al cargar listado"}
+				</div>
+
+				{loading ? <Loader /> :
+					listado &&
+					<ItemList
+						items={listado}
+						countItems={countItems}
+					/>
+				}
+
+				{error && <p>"Error al cargar listado"</p>}
+
+
+				<hr />
+				<p className="text-secondary">
+					<span className={`badge rounded-pill ${cart > 0 ? "bg-success" : "bg-secondary"}`}>
+						{cart > 0 && <ShoppingCartIcon />}
+						{cart === 0 && <ShoppingCartOutlinedIcon />}
+						{cart}
+					</span>
+					&nbsp; prendas en el carrito
+				</p>
+				<button className="btn btn-sm btn-outline-info"
+					onClick={cleanCart}> Vaciar Carrito </button>
 			</div>
-
-			{loading ? <Loader /> :
-				listado &&
-				<ItemList
-					items={listado}
-					countItems={countItems}
-				/>
-			}
-
-			{error && <p>"Error al cargar listado"</p>}
-
-
-			<hr />
-			<p className="text-secondary">
-				<span className={`badge rounded-pill ${cart > 0 ? "bg-success" : "bg-secondary"}`}>
-					{cart > 0 && <ShoppingCartIcon />}
-					{cart === 0 && <ShoppingCartOutlinedIcon />}
-					{cart}
-				</span>
-				&nbsp; prendas en el carrito
-			</p>
-			<button className="btn btn-sm btn-outline-info"
-				onClick={cleanCart}> Vaciar Carrito </button>
-		</div>
+		</>
 	)
 }
 

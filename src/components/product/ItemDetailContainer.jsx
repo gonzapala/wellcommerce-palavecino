@@ -3,8 +3,10 @@ import React, { useEffect, useState } from 'react'
 import ItemDetail from './ItemDetail';
 import Loader from '../shared/Loader';
 import { products } from '../data/data.js';
+import { useParams } from 'react-router-dom';
 
 export default function ItemDetailContainer({ itemId }) {
+    const {id} = useParams();
     const [item, setItem] = useState({
         id: null,
         title: '',
@@ -62,6 +64,7 @@ export default function ItemDetailContainer({ itemId }) {
 
     return (
         <>
+        {id}
             {loading ? <Loader /> :
                 item &&
                 <ItemDetail item={item} />
