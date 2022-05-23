@@ -21,7 +21,7 @@ export default function Item({ item, countItem }) {
                 <div className="card-body p-0 pb-3">
                     <div className="img-container">
                         <p className="badge bg-secondary disponibles">Solo quedan {item.stock} disponibles</p>
-                        <img src={`https://res.cloudinary.com/gestory/image/upload/v1627158145/${item.imagen}`}
+                        <img src={item.imagen}
                             className='w-100' alt={item.nombre} />
                     </div>
                     <div className="details">
@@ -31,7 +31,6 @@ export default function Item({ item, countItem }) {
                         <p>{item.descripcion}</p>
                         <h4 className=''>${item.precio}</h4>
                         <Link to={`/item/${item.id}`} className='btn btn-sm btn-primary'>Ver Detalles</Link>
-                        <a  href="www.google.com">Ver Detalle</a>
                         {/* <ItemCount stock={item.stock} initial="1" onAdd={onAdd} /> */}
                         <p className="text-secondary">
                             <span className={`badge rounded-pill ${count > 0 ? "bg-success" : "bg-secondary"}`}>

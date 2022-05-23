@@ -1,65 +1,51 @@
 //@ts-check
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import ItemList from './ItemList';
 
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Loader from './shared/Loader';
-// import { products } from './data/data.js'
+import { products } from './data/data.js'
 
 export default function ItemListContainer() {
 	const [listado, setListado] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
-
+	// const {darkmode} = useContext(contextoGeneral)
 
 	function fetchListado() {
 		setLoading(true);
 		setError("");
-
-		fetch("https://gestory-api.herokuapp.com/api/catalogo/products/35")
-			.then((res) => res.json())
-			.then((res) => {
-				if (res) {
-					setListado(res);
-					console.log(res)
-				} else {
-					throw new Error('Ocurrió un error.')
-				}
-			})
-			.catch((error) => {
-				setError(error);
-			})
-			.finally(() => {
-				setLoading(false);
-			});
 	}
+
+	// obtener datos locales
+	const trearListado = new Promise((res, rej) => {
+		setTimeout(() => {
+			res(products);
+		}, 2000);
+	});
+	console.log(trearListado);
+
+	trearListado
+		.then((result) => {
+			if (result) {
+				setListado(result);
+				console.log(result)
+			} else {
+				throw new Error('Ocurrió un error.')
+			}
+		})
+		.catch((error) => {
+			setError(error);
+		})
+		.finally(() => {
+			setLoading(false);
+		});
 
 	//se ejecuta cuando se monta el componente
 	useEffect(() => {
-
 		fetchListado();
-
-		// obtener datos locales
-		// const trearListado = new Promise((res, rej) => {
-		// 	setTimeout(() => {
-		// 		res(products);
-		// 	}, 2000);
-		// });
-		// console.log(trearListado);
-
-		// trearListado
-		// 	.then((result) => {
-		// 		setListado(result);
-		// 	})
-		// 	.catch((error) => {
-		// 		setError(error);
-		// 	})
-		// 	.finally(() => {
-		// 		setLoading(false);
-		// 	});
-
 	}, []);
 
 
