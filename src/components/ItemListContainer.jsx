@@ -6,9 +6,12 @@ import ItemList from './ItemList';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Loader from './shared/Loader';
-import { products } from './data/data.js'
+import { products } from '../data/data.js'
+import { useParams } from 'react-router-dom';
 
 export default function ItemListContainer() {
+	const {id} = useParams();
+	
 	const [listado, setListado] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
@@ -16,13 +19,26 @@ export default function ItemListContainer() {
 
 	function fetchListado() {
 		setLoading(true);
+		console.log(loading)
 		setError("");
+	}
+
+	function filter(id){
+		let productos;
+		if (id) {
+			productos = products.filter(item => item.categoria === Number(id))
+		}else{
+			productos = products
+		}
+		return productos
 	}
 
 	// obtener datos locales
 	const trearListado = new Promise((res, rej) => {
 		setTimeout(() => {
-			res(products);
+			res(
+				filter(id)
+			);
 		}, 2000);
 	});
 	console.log(trearListado);
@@ -41,6 +57,7 @@ export default function ItemListContainer() {
 		})
 		.finally(() => {
 			setLoading(false);
+			console.log(loading)
 		});
 
 	//se ejecuta cuando se monta el componente
@@ -60,22 +77,9 @@ export default function ItemListContainer() {
 	const cleanCart = () => {
 		setCart(0)
 	}
-
-
-
-
 	return (
 		<>
-			<h1>Wellcommerce</h1>
 			<div className="container" style={{ padding: 50 }}>
-
-				<div className='text-right d-none'>
-					<button className='btn btn-sm btn-outline-primary pull-right' onClick={() => fetchListado()}>
-						{loading ? "Loading..." : "Refresh"}
-					</button>
-					{error && "Error al cargar listado"}
-				</div>
-
 				{loading ? <Loader /> :
 					listado &&
 					<ItemList
@@ -83,21 +87,20 @@ export default function ItemListContainer() {
 						countItems={countItems}
 					/>
 				}
-
 				{error && <p>"Error al cargar listado"</p>}
-
-
 				<hr />
-				<p className="text-secondary">
-					<span className={`badge rounded-pill ${cart > 0 ? "bg-success" : "bg-secondary"}`}>
-						{cart > 0 && <ShoppingCartIcon />}
-						{cart === 0 && <ShoppingCartOutlinedIcon />}
-						{cart}
-					</span>
-					&nbsp; prendas en el carrito
-				</p>
-				<button className="btn btn-sm btn-outline-info"
-					onClick={cleanCart}> Vaciar Carrito </button>
+				<div className="text-center">
+					<p className="text-secondary">
+						<span className={`badge rounded-pill ${cart > 0 ? "bg-success" : "bg-secondary"}`}>
+							{cart > 0 && <ShoppingCartIcon />}
+							{cart === 0 && <ShoppingCartOutlinedIcon />}
+							{cart}
+						</span>
+						&nbsp; prendas en el carrito
+					</p>
+					<button className="btn btn-sm btn-outline-info"
+						onClick={cleanCart}> Vaciar Carrito </button>
+				</div>
 			</div>
 		</>
 	)
