@@ -40,7 +40,7 @@ const products = [
         categoria: 1
     },
     {
-        id: 4,
+        id: 5,
         nombre: 'Jean Azul',
         descripcion: 'Jean Azul 100% algodón.',
         precio: 1289.99,
@@ -50,7 +50,7 @@ const products = [
         categoria: 2
     },
     {
-        id: 4,
+        id: 6,
         nombre: 'Jean Negro',
         descripcion: 'Jean Negro 100% algodón.',
         precio: 1289.99,
@@ -60,7 +60,7 @@ const products = [
         categoria: 2
     },
     {
-        id: 4,
+        id: 7,
         nombre: 'Zapatillas Adidas Blanca Kermit',
         descripcion: 'Zapatillas Adidas Kermit Blanca con detalles verdes.',
         precio: 1289.99,

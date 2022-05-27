@@ -1,5 +1,5 @@
 //@ts-check
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import ItemList from './ItemList';
 
@@ -7,64 +7,31 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Loader from './shared/Loader';
 import { products } from '../data/data.js'
+import { categorias } from '../data/data.js'
 import { useParams } from 'react-router-dom';
 
 export default function ItemListContainer() {
-	const {id} = useParams();
+	const { categoria } = useParams();
+
 	
 	const [listado, setListado] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
-	// const {darkmode} = useContext(contextoGeneral)
 
 	function fetchListado() {
 		setLoading(true);
-		console.log(loading)
 		setError("");
 	}
 
-	function filter(id){
+	function filter(cat) {
 		let productos;
-		if (id) {
-			productos = products.filter(item => item.categoria === Number(id))
-		}else{
+		if (cat) {
+			productos = products.filter(item => item.categoria === Number(cat))
+		} else {
 			productos = products
 		}
 		return productos
 	}
-
-	// obtener datos locales
-	const trearListado = new Promise((res, rej) => {
-		setTimeout(() => {
-			res(
-				filter(id)
-			);
-		}, 2000);
-	});
-	console.log(trearListado);
-
-	trearListado
-		.then((result) => {
-			if (result) {
-				setListado(result);
-				console.log(result)
-			} else {
-				throw new Error('Ocurrió un error.')
-			}
-		})
-		.catch((error) => {
-			setError(error);
-		})
-		.finally(() => {
-			setLoading(false);
-			console.log(loading)
-		});
-
-	//se ejecuta cuando se monta el componente
-	useEffect(() => {
-		fetchListado();
-	}, []);
-
 
 	const [cart, setCart] = useState(0)
 	function countItems(cant) {
@@ -77,9 +44,41 @@ export default function ItemListContainer() {
 	const cleanCart = () => {
 		setCart(0)
 	}
+
+	//se ejecuta cuando se monta el componente
+	useEffect(() => {
+		
+		fetchListado();
+		
+		// obtener datos locales
+		const trearProductos = new Promise((res, rej) => {
+			setTimeout(() => {
+				res(
+					filter(categoria)
+				);
+			}, 2000);
+		});
+		trearProductos
+			.then((result) => {
+				if (result) {
+					setListado(result);
+					console.log(result)
+				} else {
+					throw new Error('Ocurrió un error.')
+				}
+			})
+			.catch((error) => {
+				setError(error);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
+	}, [categoria]);
+
 	return (
 		<>
 			<div className="container" style={{ padding: 50 }}>
+				{/* <h3>{categoria === '' ? "Todos" : categoria}</h3> */}
 				{loading ? <Loader /> :
 					listado &&
 					<ItemList

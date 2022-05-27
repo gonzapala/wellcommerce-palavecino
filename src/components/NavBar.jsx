@@ -25,7 +25,7 @@ export default class Navbar extends Component {
                             <ul>
                                 {categorias &&
                                 categorias.map((item, i) => (
-                                    <li><Link key={i} to={`/category/${item.id}`}>{item.nombre}</Link></li>
+                                    <li key={i}><Link  to={`/category/${item.id}`}>{item.nombre}</Link></li>
                                 ))}
                             </ul>
                         </li>
