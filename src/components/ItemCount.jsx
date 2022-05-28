@@ -5,6 +5,7 @@ import './ItemCount.css'
 export default function ItemCount({ stock, initial, onAdd }) {
 	const [itemCount, setItemCount] = useState(initial);
 
+
 	const handleChange = (event) => {
 		console.log('event.value: ', event.value, stock);
 		if (Number(event.value) >= 0 && Number(event.value) <= stock) {
@@ -35,20 +36,14 @@ export default function ItemCount({ stock, initial, onAdd }) {
 		} else {
 			setItemCount(Number(itemCount) - 1);
 		}
-
 	}
 
 	function add() {
 		onAdd(itemCount);
 	}
 
-	// function remove() {
-	// 	setItemCount(0)
-	// 	onAdd(0);
-	// }
 	return (
 		<>
-
 			<div className="w80 m-auto">
 				<form>
 					<div className="input-group">
@@ -63,13 +58,14 @@ export default function ItemCount({ stock, initial, onAdd }) {
 							onClick={addElement}
 							disabled={itemCount >= stock}> + </button>
 					</div>
+
 					<button className="btn btn-info w-100 m-0" type="button"
 						onClick={() => add()}
 						disabled={itemCount === 0 || stock === 0}
-					> Agregar </button>
+					> Agregar
+					</button>
 				</form>
 			</div>
-
 
 			{/* <button className="btn btn-outline-info" 
 				onClick={remove}> Quitar </button> */}

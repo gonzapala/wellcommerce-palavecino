@@ -1,22 +1,11 @@
 //@ts-check
-import React, { useState } from 'react'
-import ItemCount from './ItemCount';
+import React from 'react'
 import './Item.css'
 import { Link } from 'react-router-dom';
 
-export default function Item({ item, countItem }) {
-
-    const [count, setCount] = useState(0)
-
-    function onAdd(cant) {
-        console.log('onAdd ', cant)
-        setCount(cant);
-        countItem(cant);
-    }
-
+export default function Item({ item }) {
     return (
         <>
-            {/* {item} */}
             <div className="card mb-3">
                 <div className="card-body text-center p-0 pb-3">
                     <div className="img-container">
@@ -31,13 +20,6 @@ export default function Item({ item, countItem }) {
                         <p>{item.descripcion}</p>
                         <h4 className=''>${item.precio}</h4>
                         <Link to={`/item/${item.id}`} className='btn btn-sm btn-primary'>Ver Detalles</Link>
-
-                        {/* <ItemCount stock={item.stock} initial="1" onAdd={onAdd} /> */}
-                        <p className="text-secondary">
-                            <span className={`badge rounded-pill ${count > 0 ? "bg-success" : "bg-secondary"}`}>
-                                {count}
-                            </span>
-                            &nbsp; agregados</p>
                     </div>
                 </div>
             </div>

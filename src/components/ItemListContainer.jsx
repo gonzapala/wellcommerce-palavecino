@@ -7,7 +7,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Loader from './shared/Loader';
 import { products } from '../data/data.js'
-import { categorias } from '../data/data.js'
+// import { categorias } from '../data/data.js'
 import { useParams } from 'react-router-dom';
 
 export default function ItemListContainer() {
@@ -77,7 +77,7 @@ export default function ItemListContainer() {
 
 	return (
 		<>
-			<div className="container" style={{ padding: 50 }}>
+			<div className="container mb-3" style={{ padding: 50 }}>
 				{/* <h3>{categoria === '' ? "Todos" : categoria}</h3> */}
 				{loading ? <Loader /> :
 					listado &&
