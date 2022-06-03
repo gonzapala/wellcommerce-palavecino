@@ -6,11 +6,13 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/product/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Cart from './components/cart/Cart';
+import Context from './contextos/Context';
 
 function App() {
 	
 	return (
 		<>
+		<Context>
 			<BrowserRouter >
 				<Navbar />	
 				<Routes>
@@ -21,6 +23,7 @@ function App() {
 					<Route path="*" element="Error 404"/>
 				</Routes>
 			</BrowserRouter>
+		</Context>
 		</>
 	);
 }

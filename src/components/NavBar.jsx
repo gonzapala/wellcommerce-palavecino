@@ -5,8 +5,7 @@ import './NavBar.css';
 import './NavBarDropdown.css';
 import logo from '../logo.svg';
 import { categorias } from '../data/data';
-import CartWidget from './CartWidget';
-import Item from './Item';
+import CartWidget from './cart/CartWidget';
 
 export default class Navbar extends Component {
     render() {
