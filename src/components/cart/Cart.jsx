@@ -63,7 +63,7 @@ export default function Cart() {
 															${(item.precio * item.cantidad).toFixed(2)}
 														</td>
 														<td>
-															<button className="btn btn-outline-secondary btn-sm" onClick={() => quitarDelcarro(item.id)}>Eliminar</button>
+															<button className="btn btn-outline-secondary btn-sm" onClick={() => quitarDelcarro(item)}>Eliminar</button>
 															
 														</td>
 													</tr>
@@ -77,7 +77,7 @@ export default function Cart() {
 											</tr>
 										</tbody>
 									</table>
-									<div className='w-100 text-center d-none'>
+									<div className='w-100 text-center'>
 										<button className="btn btn-outline-secondary btn-sm" onClick={() => clearCart([])}>Limpiar Carro</button>
 									</div>
 								</div>
