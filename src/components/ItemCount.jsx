@@ -2,9 +2,8 @@
 import React, { useState } from "react";
 import './ItemCount.css'
 
-export default function ItemCount({ stock, initial, onAdd }) {
+export default function ItemCount({ stock, initial, cantidad, onAdd }) {
 	const [itemCount, setItemCount] = useState(initial);
-
 
 	const handleChange = (event) => {
 		console.log('event.value: ', event.value, stock);
@@ -48,28 +47,24 @@ export default function ItemCount({ stock, initial, onAdd }) {
 				<form>
 					<div className="input-group">
 						<button className="btn btn-outline-secondary" type="button" id="button-addon1"
-							onClick={removeElement}
+							onClick={() => removeElement()}
 							disabled={itemCount <= 0}> - </button>
 						<input type="number" min="0" max={stock}
 							className="form-control"
 							value={itemCount}
 							onInput={evt => handleChange(evt.target)} />
 						<button className="btn btn-outline-secondary" type="button" id="button-addon2"
-							onClick={addElement}
+							onClick={() => addElement()}
 							disabled={itemCount >= stock}> + </button>
 					</div>
 
 					<button className="btn btn-info w-100 m-0" type="button"
 						onClick={() => add()}
-						disabled={itemCount === 0 || stock === 0}
+						disabled={itemCount === 0 || stock === 0 || cantidad === stock}
 					> Agregar
 					</button>
 				</form>
 			</div>
-
-			{/* <button className="btn btn-outline-info" 
-				onClick={remove}> Quitar </button> */}
-
 		</>
 	);
 }

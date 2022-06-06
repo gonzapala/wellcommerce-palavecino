@@ -15,18 +15,20 @@ export default function ItemDetailContainer() {
     function fetchItem() {
         setLoading(true);
         setError("");
-
     }
 
     // uso en lugar de fetch
     const getItem = new Promise((res, rej) => {
         setTimeout(() => {
             res(products.find(item => item.id === Number(id)));
-        }, 2000);
+        }, 1);
     });
 
     getItem
         .then((result) => {
+            // if(!result.cantidad){
+            //     result.cantidad = 0;
+            // }
             setItem(result);
             // console.log('getItem: ', result);
         })
@@ -45,7 +47,6 @@ export default function ItemDetailContainer() {
 
     return (
         <>
-            {id}
             {loading ? <Loader /> :
                 item &&
                 <ItemDetail item={item} />

@@ -6,7 +6,7 @@ import './NavBarDropdown.css';
 import logo from '../logo.svg';
 import { categorias } from '../data/data';
 import CartWidget from './cart/CartWidget';
-
+import CartWidgetList from './cart/CartWidgetList';
 export default class Navbar extends Component {
     render() {
         return (
@@ -30,7 +30,11 @@ export default class Navbar extends Component {
                         </li>
                     </ul>
                     <div className="d-flex buttons-container">
-                        <CartWidget cant={5} />
+                        <ul className='dropdown'>
+                            <li><CartWidget cant={5} />
+                                <CartWidgetList></CartWidgetList>
+                            </li>
+                        </ul>
                         <a className="item button" href="www.google.com">Ingresar</a>
                     </div>
                 </nav>
