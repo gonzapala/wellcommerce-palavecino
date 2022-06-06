@@ -35,7 +35,7 @@ export default class Navbar extends Component {
                                 <CartWidgetList></CartWidgetList>
                             </li>
                         </ul>
-                        <a className="item button" href="www.google.com">Ingresar</a>
+                        {/* <a className="item button" href="www.google.com">Ingresar</a> */}
                     </div>
                 </nav>
             </>

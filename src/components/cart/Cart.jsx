@@ -3,6 +3,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { cartContext } from '../../contextos/CartContext';
 import Loader from '../shared/Loader';
 import '../cart/Cart.css';
+import { Link } from 'react-router-dom';
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import StorefrontIcon from '@mui/icons-material/Storefront';
 
 export default function Cart() {
 	const { cart, calcularTotal, quitarDelcarro, clearCart } = useContext(cartContext);
@@ -82,9 +85,12 @@ export default function Cart() {
 									</div>
 								</div>
 								:
-								<div className='text-center m-5 text-light'>
-									<p>No hay elementos agregados al carrito.</p>
-								</div>
+									<div className='card text-center p-5 m-5 text-dark'>
+										<p>
+										<ShoppingCartOutlinedIcon /> No hay elementos agregados al carrito.<br></br>
+										</p>
+										<Link to='/' className='btn btn-outline-secondary m-auto mt-5 text-decoration-none'><StorefrontIcon></StorefrontIcon> Explorar tienda</Link>
+									</div>
 							}
 						</div>
 					</div>

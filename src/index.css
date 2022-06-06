@@ -13,11 +13,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+a, .text-decoration-none{
+  text-decoration: none!important;
+}
 .text-right{
   text-align: right;
 }
 
 .text-light{
   color: #e2e3e7!important;
+}
+
+.text-dark{
+  color: #424242;
 }
