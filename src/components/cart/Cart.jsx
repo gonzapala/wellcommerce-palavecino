@@ -18,7 +18,7 @@ export default function Cart() {
 		setTimeout(() => {
 			setTotalPagar(calcularTotal());
 			setLoading(false);
-		}, 1);
+		}, 500);
 
 	}, [])
 

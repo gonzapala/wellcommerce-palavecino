@@ -6,10 +6,8 @@ export const categoriasContext = createContext(undefined);
 
 export default function CategoriasContext({ children }) {
     const [categorias, setCategorias] = useState([]);
-    const [error, setError] = useState("");
 
     const db = getFirestore();
-
     
   useEffect(() => {
     const queryFirestore = query(
@@ -24,11 +22,6 @@ export default function CategoriasContext({ children }) {
             throw new Error('Ocurrió un error.')
         }
         })
-        .catch((error) => {
-            setError(error);
-        })
-        .finally(() => {
-        });
 
   }, []);
    

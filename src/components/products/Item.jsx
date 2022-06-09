@@ -1,5 +1,5 @@
 //@ts-check
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Item.css'
 import { Link } from 'react-router-dom';
 

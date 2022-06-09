@@ -18,40 +18,26 @@ export default function ItemDetailContainer() {
         setError("");
     }
 
-    // uso en lugar de fetch
-    // const getItem = new Promise((res, rej) => {
-    //     setTimeout(() => {
-    //         res(products.find(item => item.id === Number(id)));
-    //     }, 1);
-    // });
-
-    // getItem
-    //     .then((result) => {
-    //         // if(!result.cantidad){
-    //         //     result.cantidad = 0;
-    //         // }
-    //         setItem(result);
-    //         // console.log('getItem: ', result);
-    //     })
-    //     .catch((error) => {
-    //         setError(error);
-    //     })
-    //     .finally(() => {
-    //         setLoading(false);
-    //     });
-
-    //se ejecuta cuando se monta el componente
     useEffect(() => {
-        // fetchItem();
+        fetchItem();
 
-        const myDocumento = doc(db, "productos", id);
+        const queryFirestore = doc(db, "productos", id);
 
-        getDoc(myDocumento).then((producto) => {
-          console.log(producto.id);
-          console.log(producto.data());
-    
-          setItem({ id: producto.id, ...producto.data() });
-        });
+        getDoc(queryFirestore).then((producto) => {
+            if (producto) {
+				setItem({ id: producto.id, ...producto.data() });
+				// console.log('document: ', item)
+			} else {
+				throw new Error('Ocurrió un error.')
+			}
+			})
+            .catch((error) => {
+				setError(error);
+			})
+			.finally(() => {
+				setLoading(false);
+			});
+
     }, []);
 
 
