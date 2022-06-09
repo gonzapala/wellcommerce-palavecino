@@ -32,12 +32,12 @@ export default function Cart() {
 			
 				<div className="container mt-3 mb-3">
 					<div className="row">
-						<div className="col-sm-10 offset-1">
+						<div className="col-md-10 col-sm-12 offset-md-1">
 							<h2 className='text-light'>Cart</h2>
 							{loading ? <Loader /> :
 								cart.length > 0 ? 
 								<div className="card">
-									<table className="table">
+									<table className="table table-responsive">
 										<thead className='table-dark'>
 											<tr>
 												<th scope="col">#</th>
