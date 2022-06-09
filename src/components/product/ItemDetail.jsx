@@ -26,14 +26,14 @@ export default function ItemDetail({ item }) {
         setAgregado(false);
     }
     return (
-        <div className="item-detail card col-8 offset-2 mt-5">
+        <div className="item-detail card col-md-8 offset-md-2 col-sm-12 mt-5">
             <div className="row">
-                <div className="col-7">
+                <div className="col-md-7 col-sm-12">
                     <div className="img-container">
                         <img src={item.imagen} className='w-100' alt={item.nombre} />
                     </div>
                 </div>
-                <div className="col-5">
+                <div className="col-md-5 col-sm-12">
                     <div className="details">
                         <h5 className='pt-3'>
                             {item.nombre}

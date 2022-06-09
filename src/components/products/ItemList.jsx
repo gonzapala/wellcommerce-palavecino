@@ -12,7 +12,7 @@ export default function ItemList({ items }) {
             {listado &&
                 listado.length === 0 ? <p className="text-light text-center">No se encontró ningún producto.</p> :
                 listado.map((item) => (
-                    <div className='col-3' key={item.id}>
+                    <div className='col-sm-3' key={item.id}>
                         <Item item={item} ></Item>
                     </div>
                 ))}
