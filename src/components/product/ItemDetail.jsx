@@ -1,7 +1,7 @@
 //@ts-check
 import React from 'react';
 import './ItemDetail.css';
-import ItemCount from '../ItemCount';
+import ItemCount from '../product/ItemCount';
 import {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import {cartContext} from '../../contextos/CartContext';

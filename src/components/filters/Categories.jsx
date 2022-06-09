@@ -1,19 +1,12 @@
 //@ts-check
-import React, { useState } from 'react'
+import {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
-import { categorias } from '../../data/data'
 import './Categories.css';
+import {categoriasContext} from '../../contextos/CategoriasContext';
 
 export default function Categories() {
     const [selected, setSelected] = useState(0);
-    // function getCategoria(){
-        // console.log(categoria)
-        // let c = categorias.find(item => item.nombre.toLocaleLowerCase() === categoria);
-        // setCategoriaSeleccionada(c)
-        // console.log(categorias.find(item => item.nombre.toLocaleLowerCase() === categoria),
-        // categoriaSeleccionada)
-    // }
-
+	const { categorias } = useContext(categoriasContext);
     return (
         <>
             <div className='categories-container'>
@@ -22,7 +15,7 @@ export default function Categories() {
                     {categorias &&
                         categorias.map((item, i) => (
                             <li key={i} className="">
-                                <Link to={`/category/${item.id}`}
+                                <Link to={`/category/${item.nombre.toLowerCase()}`}
                                     className={`${selected === item.id ? "selected" : ""}`}
                                     onClick={()=>(setSelected(item.id))}
                                     >{item.nombre}</Link>

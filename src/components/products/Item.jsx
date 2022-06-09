@@ -1,9 +1,10 @@
 //@ts-check
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Item.css'
 import { Link } from 'react-router-dom';
 
 export default function Item({ item }) {
+       
     return (
         <>
             <div className="card mb-3">
@@ -19,7 +20,7 @@ export default function Item({ item }) {
                         </p>
                         <p>{item.descripcion}</p>
                         <h4 className=''>${item.precio}</h4>
-                        <Link to={`/item/${item.id}`} className='btn btn-sm btn-primary'>Ver Detalles</Link>
+                        <Link to={`/item/${item.nombre.replaceAll(' ', "-").toLowerCase()}/${item.id}`} className='btn btn-sm btn-primary'>Ver Detalles</Link>
                     </div>
                 </div>
             </div>

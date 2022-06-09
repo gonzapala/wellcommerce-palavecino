@@ -1,0 +1,6 @@
+- Validaciones
+- responsive
+- readme
+- mismo height en los items
+. ingresar al detalle al hacer click en el item entero
+- consultar clase rendering

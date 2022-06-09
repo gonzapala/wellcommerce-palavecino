@@ -1,14 +1,19 @@
+//@ts-check
 // esto es un componente basado en clases no funcional como el component App
-import React, { Component } from 'react';
+import {Component} from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 import './NavBarDropdown.css';
-import logo from '../logo.svg';
-import { categorias } from '../data/data';
-import CartWidget from './cart/CartWidget';
-import CartWidgetList from './cart/CartWidgetList';
+import logo from '../../logo.svg';
+import CartWidget from '../cart/CartWidget';
+import CartWidgetList from '../cart/CartWidgetList';
+import {categoriasContext} from '../../contextos/CategoriasContext';
+
 export default class Navbar extends Component {
+    static contextType = categoriasContext;
     render() {
+        const categorias = this.context.categorias;
+        console.log('context: ', this.context.categorias)
         return (
             <>
                 <nav className="nav">
@@ -24,7 +29,7 @@ export default class Navbar extends Component {
                             <ul>
                                 {categorias &&
                                 categorias.map((item, i) => (
-                                    <li key={i}><Link  to={`/category/${item.id}`}>{item.nombre}</Link></li>
+                                    <li key={i}><Link  to={`/category/${item.nombre.toLowerCase()}`}>{item.nombre}</Link></li>
                                 ))}
                             </ul>
                         </li>
@@ -35,7 +40,6 @@ export default class Navbar extends Component {
                                 <CartWidgetList></CartWidgetList>
                             </li>
                         </ul>
-                        {/* <a className="item button" href="www.google.com">Ingresar</a> */}
                     </div>
                 </nav>
             </>
