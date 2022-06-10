@@ -1,9 +1,35 @@
-.img-container{
-    position: relative;
+.card.item{
+    height: 650px;
+    overflow: hidden;
 }
-.disponibles{
+.card.item .img-container{
+    position: relative;
+    height: 430px;
+    overflow: hidden;
+}
+
+.card.item .img-container .disponibles{
     position: absolute;
     right: 1%;
     top: 1%;
     --bs-bg-opacity: .5;
+}
+
+.card.item .img-container .descuento{
+    position: absolute;
+    left: 1%;
+    bottom: 1%;
+    font-weight: initial;
+    font-size: 1em;
+}
+
+.card.item .details .descipcion{
+    height: 50px;
+    overflow: hidden;
+}
+
+.text-line-through{
+    text-decoration:line-through;
+    color: #9e9e9e;
+    font-size: smaller;
 }

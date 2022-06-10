@@ -39,8 +39,12 @@ export default function ItemDetail({ item }) {
                             {item.nombre}
                         </h5>
                         <p>{item.descripcion}</p>
-
-                        <h4 className=''><strong>$ {item.precio}</strong></h4>
+                        
+                        { item.descuento && <span className="badge bg-warning descuento">-{item.descuento}%</span> } 
+                        <h4 className='precio'>
+                            <span className={`${item.descuento ? "text-line-through" : ""}`}>${item.precio}</span>&nbsp;
+                            { item.descuento &&  <span className={`${item.descuento ? "" : ""}`}>${item.precio - (item.precio * (item.descuento / 100))}</span>}    
+                        </h4>
                         <p><span className="badge rounded-pill text-bg-light">Talle {item.talle}</span></p>
                         
                         {

@@ -12,6 +12,9 @@ export default function Cart() {
 	const [totalPagar, setTotalPagar] = useState(0);
 	const [loading, setLoading] = useState(false);
 	
+	function finalizarCompra(){
+
+	}
 	useEffect(() => {
 		setLoading(true);
 		// console.log('cart al montar component: ', cart)
@@ -33,7 +36,7 @@ export default function Cart() {
 				<div className="container mt-3 mb-3">
 					<div className="row">
 						<div className="col-md-10 col-sm-12 offset-md-1">
-							<h2 className='text-light'>Cart</h2>
+							<h2 className='text-light'>Carrito de Compras</h2>
 							{loading ? <Loader /> :
 								cart.length > 0 ? 
 								<div className="card">
@@ -43,9 +46,7 @@ export default function Cart() {
 												<th scope="col">#</th>
 												<th scope="col">Nombre</th>
 												<th scope="col">Descripción</th>
-												<th scope="col">Talle</th>
 												<th scope="col">Precio</th>
-												<th scope="col"></th>
 											</tr>
 										</thead>
 
@@ -57,23 +58,34 @@ export default function Cart() {
 														<th scope="row">{i + 1}</th>
 														<td>
 															<img src={item.imagen} className='img' alt={item.nombre} /><br></br>
-															{item.nombre}
 														</td>
 
-														<td>{item.descripcion}</td>
-														<td>{item.talle}</td>
-														<td>${item.precio} x {item.cantidad}<br></br>
-															${(item.precio * item.cantidad).toFixed(2)}
+														<td>
+															{item.nombre}<br></br>
+															{item.descripcion}<br></br>
+															<small>Talle: {item.talle}</small><br></br>
+															<button className="btn btn-outline-secondary btn-sm" onClick={() => quitarDelcarro(item)}>Eliminar</button>
 														</td>
 														<td>
-															<button className="btn btn-outline-secondary btn-sm" onClick={() => quitarDelcarro(item)}>Eliminar</button>
-															
+														{ item.cantidad > 1 ? item.cantidad + ' Unidades' : item.cantidad + ' Unidad'}<br></br>
+														{ item.descuento ? 
+															<>
+																<span className={`${item.descuento ? "text-line-through" : ""}`}>${item.precio}</span>&nbsp;
+                            									{ item.descuento &&  <span className={`${item.descuento ? "" : ""}`}>${item.precio - (item.precio * (item.descuento / 100))}</span>}    
+																<br />
+																<span>Precio: </span>${( (item.precio - (item.precio * (item.descuento / 100))) * item.cantidad).toFixed(2)}	
+															</>
+															:
+															<>
+																<span>Precio: </span>${(item.precio * item.cantidad).toFixed(2)}
+															</>
+														} 
 														</td>
 													</tr>
 												))}
 											<tr>
 											{/* */}
-												<td colspan="6"  className='td-total'>
+												<td colspan="4"  className='td-total'>
 												{/* .toFixed(2) */}
 													Total: <strong>${cart && totalPagar > 0 && totalPagar}</strong>
 												</td>
@@ -82,6 +94,7 @@ export default function Cart() {
 									</table>
 									<div className='w-100 text-center'>
 										<button className="btn btn-outline-secondary btn-sm" onClick={() => clearCart([])}>Limpiar Carro</button>
+										<button className="btn btn-primary btn-sm" onClick={() => finalizarCompra([])}>Finalizar Compra</button>
 									</div>
 								</div>
 								:

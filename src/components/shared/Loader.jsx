@@ -6,7 +6,7 @@ export default function loader() {
     <>
     <div className='text-center'>
     <div className="lds-grid m-5"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-    <br></br>Cargando...
+    <br></br><span className='text-light'>Cargando...</span>
     </div>
     </>
   )

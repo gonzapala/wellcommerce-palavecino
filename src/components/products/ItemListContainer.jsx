@@ -42,6 +42,10 @@ export default function ItemListContainer() {
 			categoria_key: 'jeans'
 	});}
 
+	function showListado(){
+		console.log('Listado: ', listado)
+	}
+
 	//se ejecuta cuando se monta el componente
 	useEffect(() => {
 		fetchListado();
@@ -59,11 +63,15 @@ export default function ItemListContainer() {
 			);
 		}
 	
-
+		
 		getDocs(misDocumentos).then(({ docs }) => {
 			if (docs) {
+				console.log('documents: ', docs)
+				// docs.sort((item) => item.categoria_key)
 				setListado(docs.map((item) => ({ id: item.id, ...item.data() })));
-				console.log('documents: ', listado)
+				console.log('Listado: ', listado)
+				showListado();
+				// listado.sort((a, b) => a.categoria_key > b.categoria_key ? 1 : -1)
 			} else {
 				throw new Error('Ocurrió un error.')
 			}
