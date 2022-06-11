@@ -45,7 +45,7 @@ export default function ItemCount({ stock, initial, cantidad, onAdd }) {
 		<>
 			<div className="w80 m-auto">
 				<form>
-					<div className="input-group">
+					<div className="counter input-group">
 						<button className="btn btn-outline-secondary" type="button" id="button-addon1"
 							onClick={() => removeElement()}
 							disabled={itemCount <= 0}> - </button>

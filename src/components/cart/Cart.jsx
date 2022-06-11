@@ -11,10 +11,9 @@ export default function Cart() {
 	const { cart, calcularTotal, quitarDelcarro, clearCart } = useContext(cartContext);
 	const [totalPagar, setTotalPagar] = useState(0);
 	const [loading, setLoading] = useState(false);
-	
-	function finalizarCompra(){
+	const [id, setId] = useState("");
 
-	}
+
 	useEffect(() => {
 		setLoading(true);
 		// console.log('cart al montar component: ', cart)
@@ -94,7 +93,8 @@ export default function Cart() {
 									</table>
 									<div className='w-100 text-center'>
 										<button className="btn btn-outline-secondary btn-sm" onClick={() => clearCart([])}>Limpiar Carro</button>
-										<button className="btn btn-primary btn-sm" onClick={() => finalizarCompra([])}>Finalizar Compra</button>
+										<Link to='/checkout' className="btn btn-primary btn-sm">Finalizar Compra</Link>
+										
 									</div>
 								</div>
 								:
