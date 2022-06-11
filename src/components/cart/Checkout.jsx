@@ -53,13 +53,13 @@ export default function Checkout() {
         addDoc(orders, orden)
         .then(({ id }) => {
             setIdOrden(id)
-            
+            console.log(idOrden)
         })
         .catch((error) => {
             console.log(error);
         })
         .finally(() => {
-            navigate("/completed/"+idOrden);
+            // navigate("/completed/"+idOrden);
         });
     }
     function handdleSwitch() {
@@ -70,7 +70,7 @@ export default function Checkout() {
         const value = target.value;
         const name = target.name;
 
-        console.log(target, value, name)
+        // console.log(target, value, name)
 
         setForm(prevState => ({
             ...prevState,    // keep all other key-value pairs
@@ -197,7 +197,7 @@ export default function Checkout() {
                                     </table>
                                     <div className='w-100 text-center'>
                                         <button className="btn btn-primary btn-sm" onClick={() => finalizarCompra()}>Finalizar Compra</button>
-                                        
+                                        <div>{idOrden && "tu orden es: " + idOrden}</div>
                                     </div>
                                 </div>
                                 :
