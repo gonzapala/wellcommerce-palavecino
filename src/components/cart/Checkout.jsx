@@ -21,7 +21,7 @@ export default function Checkout() {
     const { cart, calcularTotal } = useContext(cartContext);
     const [totalPagar, setTotalPagar] = useState(0);
     const [loading, setLoading] = useState(false);
-    const [idOrden, setIdOrden] = useState("");
+    const [idOrden, setIdOrden] = useState('');
     const [envio, setEnvio] = useState(false);
     const [form, setForm] = useState({ name: '', phone: null, email: '', payment: 1, adress: '' });
     const [formasPago, setFormasPago] = useState(
@@ -50,11 +50,17 @@ export default function Checkout() {
             total: totalPagar,
         }
         const orders = collection(db, "ordenes");
-        addDoc(orders, orden).then(({ id }) => setIdOrden(id))
-        .finish({
+        addDoc(orders, orden)
+        .then(({ id }) => {
+            setIdOrden(id)
             
         })
-        navigate("/completed", {idOrden: idOrden});
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+            navigate("/completed/"+idOrden);
+        });
     }
     function handdleSwitch() {
         setEnvio(!envio);
