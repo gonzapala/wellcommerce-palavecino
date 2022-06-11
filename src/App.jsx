@@ -9,7 +9,7 @@ import Cart from './components/cart/Cart';
 import CartContext from './contextos/CartContext';
 import CategoriasContext from './contextos/CategoriasContext';
 import Checkout from './components/cart/Checkout';
-
+import Completed from './components/cart/Completed';
 function App() {
 	
 	return (
@@ -24,6 +24,7 @@ function App() {
 					<Route path="/item/:nombre/:id" element={<ItemDetailContainer/>}/> 
 					<Route path="/cart" element={<Cart/>} />
 					<Route path="/checkout" element={<Checkout/>} />
+					<Route path="/completed" element={<Completed/>} />
 					<Route path="*" element="Error 404"/>
 				</Routes>
 			</BrowserRouter>
