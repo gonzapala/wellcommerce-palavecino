@@ -87,7 +87,7 @@ export default function ItemListContainer() {
 
 	return (
 		<>
-			<div className="container-fluid mb-3" style={{ padding: 50 }}>
+			<div className="container-fluid mb-3 pt-5">
 				<div className="row">
 					<div className="col-sm-2">
 						<Categories></Categories>
