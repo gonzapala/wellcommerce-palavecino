@@ -1,11 +1,14 @@
-- Validaciones
-- responsive
++ responsive
++ mismo height en los items
++ consultar clase rendering
++ Validaciones del formulario
++ ingresar al detalle al hacer click en el item entero
+- decrementar stock
+- persisitir datos en local storage
 - readme
-- mismo height en los items
-. ingresar al detalle al hacer click en el item entero
-- consultar clase rendering
 
 preguntas al tutor:
-¿Por lo general se utiliza typescript en los proyectos con react? Quiero saber, así paso mi proyecto a typescript, algunos chicos ya lo estaban haciendo. También porque muchos ejemplos que encuentro en stackoverflow son usando componentes basados en clases.
-¿Es necesario aprender redux o no se usa tanto?
+¿Por lo general se utiliza typescript en los proyectos con react? 
+Quiero saber esto, así lo implemento en mi proyecto, algunos chicos ya lo estaban haciendo. También porque muchos ejemplos que encuentro en stackoverflow son usando componentes basados en clases.
+¿Es necesario aprender redux o no se suele usar tanto?
 ¿Seria bueno crear "modelos" o interfaces de tipos de datos, por ejemplo de prodcuto o cart?

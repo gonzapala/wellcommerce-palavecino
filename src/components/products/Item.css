@@ -1,10 +1,10 @@
 .card.item{
-    height: 650px;
+    /* height: 650px; */
     overflow: hidden;
 }
 .card.item .img-container{
     position: relative;
-    height: 400px;
+    height: 320px;
     overflow: hidden;
 }
 
@@ -18,14 +18,23 @@
 .card.item .img-container .descuento{
     position: absolute;
     left: 1%;
-    bottom: 1%;
+    top: 1%;
     font-weight: initial;
     font-size: 1em;
 }
-
-.card.item .details .descipcion{
-    height: 50px;
+.details{
+    padding: 0 1em;
+}
+.details .nombre{
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
+}
+.card.item .details .descipcion{
+    height: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .text-line-through{

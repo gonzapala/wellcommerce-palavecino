@@ -7,11 +7,10 @@ import Loader from '../shared/Loader';
 // import { categorias } from '../data/data.js'
 import { useParams } from 'react-router-dom';
 import Categories from '../filters/Categories'
-
+import './ItemListContainer.css'
 import {
 	collection,
 	getDocs,
-	addDoc,
 	getFirestore,
 	query,
 	where,
@@ -31,17 +30,6 @@ export default function ItemListContainer() {
 		setError("");
 	}
 
-	function add(){
-		addDoc(collection(db, "productos"), {
-			nombre: 'Jean Azul',
-			descripcion: 'Jean Azul 100% algodón.',
-			precio: 5600,
-			stock: 7,
-			talle: 'S',
-			imagen: 'https://outlet.penguinargentina.com/uploads/picture/image/26989/FQNHB020489-2.jpg',
-			categoria_key: 'jeans'
-	});}
-
 	function showListado(){
 		console.log('Listado: ', listado)
 	}
@@ -59,11 +47,10 @@ export default function ItemListContainer() {
 			misDocumentos = query(
 				collection(db, "productos"),
 				where("categoria_key", "==", categoria),
-				// where("precio", ">", 4)
 			);
 		}
-	
-		
+
+			
 		getDocs(misDocumentos).then(({ docs }) => {
 			if (docs) {
 				console.log('documents: ', docs)
@@ -71,7 +58,6 @@ export default function ItemListContainer() {
 				setListado(docs.map((item) => ({ id: item.id, ...item.data() })));
 				console.log('Listado: ', listado)
 				showListado();
-				// listado.sort((a, b) => a.categoria_key > b.categoria_key ? 1 : -1)
 			} else {
 				throw new Error('Ocurrió un error.')
 			}
@@ -87,7 +73,7 @@ export default function ItemListContainer() {
 
 	return (
 		<>
-			<div className="container-fluid mb-3 pt-5">
+			<div className="container-fluid page mb-3 pt-5">
 				<div className="row">
 					<div className="col-sm-2">
 						<Categories></Categories>
@@ -101,7 +87,6 @@ export default function ItemListContainer() {
 								/>
 							}
 						</div>
-						<button className="btn btn-outline-secondary btn-sm d-none"  onClick={() => add()}>Agregar</button>
 					</div>
 				</div>
 				{error && <p>"Error al cargar listado"</p>}
