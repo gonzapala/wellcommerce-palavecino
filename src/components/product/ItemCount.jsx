@@ -1,16 +1,16 @@
 //@ts-check
-import React, { useState } from "react";
-import './ItemCount.css'
+import { useState } from "react";
+import './ItemCount.css';
 
 export default function ItemCount({ stock, initial, cantidad, onAdd }) {
 	const [itemCount, setItemCount] = useState(initial);
 
 	const handleChange = (event) => {
-		console.log('event.value: ', event.value, stock);
+		//console.log('event.value: ', event.value, stock);
 		if (Number(event.value) >= 0 && Number(event.value) <= stock) {
 			setItemCount(event.value)
 		} else {
-			console.log('No está en el rango.');
+			//console.log('No está en el rango.');
 			event.value = initial;
 			setItemCount(initial)
 		}
@@ -21,7 +21,7 @@ export default function ItemCount({ stock, initial, cantidad, onAdd }) {
 	}
 
 	function addElement() {
-		console.log(itemCount)
+		//console.log(itemCount)
 		if (itemCount >= stock) {
 			setItemCount(stock)
 		} else {

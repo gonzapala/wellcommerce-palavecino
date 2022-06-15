@@ -1,8 +1,8 @@
 //@ts-check
-import {useState, useContext} from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { categoriasContext } from '../../contextos/CategoriasContext';
 import './Categories.css';
-import {categoriasContext} from '../../contextos/CategoriasContext';
 
 export default function Categories() {
     const [selected, setSelected] = useState(0);

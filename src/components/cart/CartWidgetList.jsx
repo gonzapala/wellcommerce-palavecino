@@ -1,8 +1,8 @@
 //@ts-check
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { cartContext } from '../../contextos/CartContext';
-import './CartWidgetList.css'
+import './CartWidgetList.css';
 
 export default function CartWidgetList() {
     const { cart, calcularTotal } = useContext(cartContext);

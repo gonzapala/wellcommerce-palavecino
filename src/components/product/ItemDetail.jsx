@@ -1,10 +1,9 @@
 //@ts-check
-import React from 'react';
-import './ItemDetail.css';
-import ItemCount from '../product/ItemCount';
-import {useState, useContext} from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {cartContext} from '../../contextos/CartContext';
+import { cartContext } from '../../contextos/CartContext';
+import ItemCount from '../product/ItemCount';
+import './ItemDetail.css';
 // import Image from 'material-ui-image'
 
 export default function ItemDetail({ item }) {
@@ -14,7 +13,7 @@ export default function ItemDetail({ item }) {
 
     //setea la cantidad seleccionada del producto
     function onAdd(cant) {
-        console.log('onAdd ', cant)
+        //console.log('onAdd ', cant)
         setCount(cant);
         setAgregado(true);
         agregarAlcarro(item, cant)

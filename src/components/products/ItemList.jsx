@@ -1,6 +1,5 @@
 //@ts-check
-import React from 'react'
-import Item from'./Item';
+import Item from './Item';
 
 export default function ItemList({ items }) {
     const listado = items;

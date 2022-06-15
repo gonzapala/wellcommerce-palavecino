@@ -1,11 +1,11 @@
 //@ts-check
-import React, { useContext, useEffect, useState } from 'react'
-import { cartContext } from '../../contextos/CartContext';
-import Loader from '../shared/Loader';
-import '../cart/Cart.css';
-import { Link } from 'react-router-dom';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import StorefrontIcon from '@mui/icons-material/Storefront';
+import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { cartContext } from '../../contextos/CartContext';
+import '../cart/Cart.css';
+import Loader from '../shared/Loader';
 import CartTable from './CartTable';
 export default function Cart() {
 	const { cart, calcularTotal, quitarDelcarro, clearCart } = useContext(cartContext);

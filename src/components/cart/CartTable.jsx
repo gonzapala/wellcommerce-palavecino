@@ -1,5 +1,5 @@
 //@ts-check
-import { useContext} from 'react';
+import { useContext } from 'react';
 import { cartContext } from '../../contextos/CartContext';
 import '../cart/Cart.css';
 

@@ -1,19 +1,18 @@
 //@ts-check
-import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom";
-import { cartContext } from '../../contextos/CartContext';
-import Loader from '../shared/Loader';
-import '../cart/Cart.css';
-import { Link } from 'react-router-dom';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import StorefrontIcon from '@mui/icons-material/Storefront';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import { cartContext } from '../../contextos/CartContext';
+import '../cart/Cart.css';
+import Loader from '../shared/Loader';
+import CartTable from './CartTable';
 import './Checkout.css';
 import './switch.css';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import CartTable from './CartTable';
 
 export default function Checkout() {
     const db = getFirestore();
@@ -23,6 +22,7 @@ export default function Checkout() {
     const [loading, setLoading] = useState(false);
     const [envio, setEnvio] = useState(false);
     const [form, setForm] = useState({ name: '', phone: null, email: '', payment: 1, adress: '' });
+    const [formOk, setFormOk] = useState({state: true, message: ''});
     const [formasPago] = useState(
         [
             {
@@ -54,24 +54,43 @@ export default function Checkout() {
         const orders = collection(db, "ordenes");
         addDoc(orders, orden)
         .then(({ id }) => {
-            console.log(id);
+            //console.log(id);
             navigate("/completed/"+id);
         })
         .catch((error) => {
-            console.log(error);
+            //console.log(error);
         })
     }
+
     function handdleSwitch() {
         setEnvio(!envio);
     }
 
     function validarCampos(){
-        if(form.name === '' || form.phone === null || form.adress === ''){
-            console.log(form);
+        console.log(form);
+        if(form.name.length < 3 ){
+            setFormOk({state: false, message: "El nombre debe contar con más de 3 letras."});
             return false
-        }else{
-            return true;
         }
+        if(form.phone === null || form.phone === '' ){
+            setFormOk({state: false, message: "Debe ingresar un número de teléfono válido."});
+            return false
+        }
+        const email = form.email.match( 
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+        // console.log(email);
+        if(email === null){
+            setFormOk({state: false, message: "Debe ingresar un correo electrónico válido."});
+            return false
+        }
+        if(envio && form.adress === ''){
+            setFormOk({state: false, message: "Debe ingresar una dirección válida."});
+            return false
+        }
+
+        setFormOk({state: true, message: ""});
+        return true;
     }
     
     function handleInputChange(event) {
@@ -107,7 +126,7 @@ export default function Checkout() {
             <div className="container mt-3 mb-3">
                 <div className="row">
                     <div className="col-md-10 col-sm-12 offset-md-1">
-                        <h2 className='text-light'>Carrito de Compras</h2>
+                        <h2 className='text-light'>Resumen de la compra</h2>
                         {loading ?
                             <>
                                 <Loader />
@@ -115,7 +134,6 @@ export default function Checkout() {
                             :
                             cart.length > 0 ?
                                 <div className="card p-3">
-                                     <h4>Resumen</h4>
                                     <CartTable canEdit={{ canEdit: false }}></CartTable>
                                     <table>
                                         <tbody>
@@ -123,7 +141,7 @@ export default function Checkout() {
                                                 {/* */}
                                                 <td colspan="4" className='td-total'>
                                                     {/* .toFixed(2) */}
-                                                    <div class="alert alert-success" role="alert">
+                                                    <div className="alert alert-success" role="alert">
                                                     Total: <strong>${cart && totalPagar > 0 && totalPagar}</strong>
                                                     </div>
                                                 </td>
@@ -136,6 +154,11 @@ export default function Checkout() {
                                             <div className="col-sm-6">
                                                 <h4>Información del Cliente</h4>
                                                 <div className="form-text mb-3">* Campos Requeridos</div>
+                                                {!formOk.state && 
+                                                <div className="alert alert-warning" role="alert">
+                                                    {formOk.message}
+                                                </div>
+                                                }
                                                 <div className="mb-3">
                                                     <label htmlFor="name" className="form-label">Nombre y Apellido *</label>
                                                     <input type="text" className="form-control" id="name" aria-describedby="emailHelp" required
@@ -199,12 +222,13 @@ export default function Checkout() {
                                                
                                             </div>
 
-                                            <div className='w-100 text-center'>
-                                                    <button className="btn btn-primary btn-sm" onClick={() => finalizarCompra()}
-                                                    >Finalizar Compra</button>
-                                                </div>
+                                          
                                         </div>
                                     </form>
+                                    <div className='w-100 text-center'>
+                                                    <button className="btn btn-primary btn-sm" onClick={() => finalizarCompra()}
+                                                    >Concretar Compra</button>
+                                                </div>
                                 </div>
                                 :
                                 <div className='card text-center p-5 m-5 text-dark'>

@@ -1,9 +1,9 @@
 //@ts-check
-import React, { useEffect, useState } from 'react'
-import ItemDetail from './ItemDetail';
-import Loader from '../shared/Loader';
-import { useParams } from 'react-router-dom';
 import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Loader from '../shared/Loader';
+import ItemDetail from './ItemDetail';
 
 export default function ItemDetailContainer() {
     const { id } = useParams();

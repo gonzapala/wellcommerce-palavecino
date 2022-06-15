@@ -1,10 +1,10 @@
 //@ts-check
-import React, { useContext } from "react";
-import "./CartWidget.css";
-import {cartContext} from '../../contextos/CartContext'
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { useContext } from "react";
 import { Link } from 'react-router-dom';
+import { cartContext } from '../../contextos/CartContext';
+import "./CartWidget.css";
 
 export default function CartWidget() {
   const { cantidadItems } = useContext(cartContext);

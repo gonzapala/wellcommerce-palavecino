@@ -1,20 +1,20 @@
 //@ts-check
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 import ItemList from './ItemList';
 
 import Loader from '../shared/Loader';
 // import { categorias } from '../data/data.js'
-import { useParams } from 'react-router-dom';
-import Categories from '../filters/Categories'
-import './ItemListContainer.css'
 import {
-	collection,
-	getDocs,
-	getFirestore,
-	query,
-	where,
+    collection,
+    getDocs,
+    getFirestore,
+    query,
+    where
 } from "firebase/firestore";
+import { useParams } from 'react-router-dom';
+import Categories from '../filters/Categories';
+import './ItemListContainer.css';
 
 export default function ItemListContainer() {
 	const { categoria } = useParams();
@@ -31,14 +31,14 @@ export default function ItemListContainer() {
 	}
 
 	function showListado(){
-		console.log('Listado: ', listado)
+		//console.log('Listado: ', listado)
 	}
 
 	//se ejecuta cuando se monta el componente
 	useEffect(() => {
 		fetchListado();
 		let misDocumentos;
-		console.log('categoria ', categoria)
+		//console.log('categoria ', categoria)
 		if (categoria === undefined) {
 			misDocumentos = query(
 				collection(db, "productos")
@@ -53,10 +53,10 @@ export default function ItemListContainer() {
 			
 		getDocs(misDocumentos).then(({ docs }) => {
 			if (docs) {
-				console.log('documents: ', docs)
+				//console.log('documents: ', docs)
 				// docs.sort((item) => item.categoria_key)
 				setListado(docs.map((item) => ({ id: item.id, ...item.data() })));
-				console.log('Listado: ', listado)
+				//console.log('Listado: ', listado)
 				showListado();
 			} else {
 				throw new Error('Ocurrió un error.')

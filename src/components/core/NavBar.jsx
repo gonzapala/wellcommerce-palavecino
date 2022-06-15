@@ -1,19 +1,19 @@
 //@ts-check
 // esto es un componente basado en clases no funcional como el component App
-import {Component} from 'react';
+import { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css';
-import './NavBarDropdown.css';
+import { categoriasContext } from '../../contextos/CategoriasContext';
 import logo from '../../logo.svg';
 import CartWidget from '../cart/CartWidget';
 import CartWidgetList from '../cart/CartWidgetList';
-import {categoriasContext} from '../../contextos/CategoriasContext';
+import './NavBar.css';
+import './NavBarDropdown.css';
 
 export default class Navbar extends Component {
     static contextType = categoriasContext;
     render() {
         const categorias = this.context.categorias;
-        console.log('context: ', this.context.categorias)
+        //console.log('context: ', this.context.categorias)
         return (
             <>
                 <nav className="nav">

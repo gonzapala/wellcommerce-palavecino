@@ -1,14 +1,31 @@
 + responsive
 + mismo height en los items
 + consultar clase rendering
-+ Validaciones del formulario
 + ingresar al detalle al hacer click en el item entero
-- decrementar stock
++ decrementar stock
 - persisitir datos en local storage
+- Validaciones del formulario
 - readme
+    - como clonar el proyecto
+    - como instalarlo
+    - como correr el proyecto
+    - como buildearlo
+    - deploy en vercel
+    - librerías y para qué
+    - explicar como está funciona y como está hecho
+    - gifs
+
 
 preguntas al tutor:
 ¿Por lo general se utiliza typescript en los proyectos con react? 
 Quiero saber esto, así lo implemento en mi proyecto, algunos chicos ya lo estaban haciendo. También porque muchos ejemplos que encuentro en stackoverflow son usando componentes basados en clases.
 ¿Es necesario aprender redux o no se suele usar tanto?
 ¿Seria bueno crear "modelos" o interfaces de tipos de datos, por ejemplo de prodcuto o cart?
+
+Deploy firebase
+npm install -g firebase-tools
+antes de cada deploy crear o recrear el build local: "npm run build".
+firebase login (si no estoy logueado en la cli)
+firebase init (solo la primera vez luego no hacerlo!)
+seleccionar el proyecto existente de la lista, seleccionar carpeta build (no public), configurar como spa yes, reescribir index no.
+firebase deploy (siempre primero crear el build y luego “firebase deploy”)
