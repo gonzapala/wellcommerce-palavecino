@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# Wellcommerce
+## _Tienda online creada con react_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-In the project directory, you can run:
+Wellcommerce es una tienda online creada con la popular librería Javascript, React✨
+Demo: https://wellcommerce.vercel.app/
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Selecciona productos con su cantidad y puedes agregalos a un carrito de compras.
+- Incluye filtros por categorías de productos.
+- El carrito cuenta con una tabla donde se puede ver el resumen del mismo y el monto total.
+- Antes de finalizar la compra el sistema le solicitará al usuario ingresar tus datos personales: Nombre, Telefono, Correo y dirección.
+- Los campos del formulario se validan antes de finalizar la compra.
+- Selecctor de métodos de pago: "Efectivo", "Tarjeta de débito", "Tarjeta de crédito".
+- El usuario tiene la opción de elegir entre retirar el pedido del local o pedir que se lo envía a su dirección.
+- Es responsive, se adapta a pantallas grandes como a smartphones.
+- Utiliza una API basada en firebase: con las colecciones "categorias", "productos" y "ordenes".
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+> Productos
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Los productos cuentan con los siguientes features: 
+- Nombre y descripción.
+- Imagen.
+- Talle.
+- Categoría.
+- Descuento.
+- Precio y precio con descuento aplicado.
+- Cantidad de Stock.
+- Indicador cuando el sotck del mismo es menor a 5.
 
-### `npm run build`
+## Tech
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Wellcomerce usa las siguientes librerías opensource:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [ReactJS] - HTML enhanced for web apps!
+- [Bootstrap CSS] - Propociona el sistema para que la app sea responsive y los estilos de textos, botones, cards y formularios.
+- [Material-ui/material icons] - Se usan los íconos de esta librería.
+- [Firebase] - La tienda se conecta a un API basada en firebase.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Wllcommerce es open source y tiene n repositorio público en GitHub: https://github.com/gonzapala/wellcommerce-palavecino
 
-### `npm run eject`
+## Instalación
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Wellcommerce requiere [Node.js](https://nodejs.org/) v10+
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para clonar el proyecto utilizar:
+```sh
+git clone git@github.com:gonzapala/wellcommerce-palavecino.git
+```
+Instalar el proyecto y sus dependencias
+```sh
+npm i
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Correr el proyecto con el comando
+```sh
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Para crear un build para producción:
+```sh
+npm run build
+```
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+MIT
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Free Software, Hell Yeah!**
 
-### Code Splitting
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   [dill]: <https://github.com/joemccann/dillinger>
+   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
+   [john gruber]: <http://daringfireball.net>
+   [df1]: <http://daringfireball.net/projects/markdown/>
+   [markdown-it]: <https://github.com/markdown-it/markdown-it>
+   [Ace Editor]: <http://ace.ajax.org>
+   [node.js]: <http://nodejs.org>
+   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
+   [jQuery]: <http://jquery.com>
+   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
+   [express]: <http://expressjs.com>
+   [AngularJS]: <http://angularjs.org>
+   [Gulp]: <http://gulpjs.com>
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
+   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
+   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
+   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
+   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
+   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
