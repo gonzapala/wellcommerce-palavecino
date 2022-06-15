@@ -7,6 +7,13 @@
 Wellcommerce es una tienda online creada con la popular librería Javascript, React✨
 Demo: https://wellcommerce.vercel.app/
 
+Agregar productos al carrito:
+![navegacion_ecommerce_1](https://user-images.githubusercontent.com/13459321/173737381-b3897fc0-503c-4d2e-813c-668b72ad0eb9.gif)
+
+Ir al carrito y finalizar compra:
+![navegacion_ecommerce_2](https://user-images.githubusercontent.com/13459321/173737470-639f04ac-a827-4028-bbb3-5f05cce2cb26.gif)
+
+
 ## Features
 
 - Selecciona productos con su cantidad y puedes agregalos a un carrito de compras.
