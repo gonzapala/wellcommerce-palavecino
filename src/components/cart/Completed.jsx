@@ -15,7 +15,6 @@ export default function Completed() {
                 stock: element.stock-element.cantidad,
             };
             const myDocumento = doc(db, "productos", element.id);
-            //console.log(element.id, myProdcut)
             updateDoc(myDocumento, myProdcut)
             .then(() => console.log("salio todo bien"))
             .catch((e) => {
@@ -26,7 +25,6 @@ export default function Completed() {
     }
 
     useEffect(() => {
-        //console.log(id)
         if(id){
             updateStock();
             clearCart();

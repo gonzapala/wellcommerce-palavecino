@@ -6,22 +6,15 @@ export default function ItemCount({ stock, initial, cantidad, onAdd }) {
 	const [itemCount, setItemCount] = useState(initial);
 
 	const handleChange = (event) => {
-		//console.log('event.value: ', event.value, stock);
 		if (Number(event.value) >= 0 && Number(event.value) <= stock) {
 			setItemCount(event.value)
 		} else {
-			//console.log('No está en el rango.');
 			event.value = initial;
 			setItemCount(initial)
 		}
-		// if(event.value == ''){
-		// 	console.log('vacio');
-		// 	setItemCount(initial)
-		// }
 	}
 
 	function addElement() {
-		//console.log(itemCount)
 		if (itemCount >= stock) {
 			setItemCount(stock)
 		} else {

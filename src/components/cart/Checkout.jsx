@@ -22,7 +22,7 @@ export default function Checkout() {
     const [loading, setLoading] = useState(false);
     const [envio, setEnvio] = useState(false);
     const [form, setForm] = useState({ name: '', phone: null, email: '', payment: 1, adress: '' });
-    const [formOk, setFormOk] = useState({state: true, message: ''});
+    const [formOk, setFormOk] = useState({ state: true, message: '' });
     const [formasPago] = useState(
         [
             {
@@ -41,8 +41,8 @@ export default function Checkout() {
     );
 
     function finalizarCompra() {
-        if(!validarCampos()) return;
-        
+        if (!validarCampos()) return;
+
         const orden = {
             buyer: {
                 ...form
@@ -53,58 +53,56 @@ export default function Checkout() {
 
         const orders = collection(db, "ordenes");
         addDoc(orders, orden)
-        .then(({ id }) => {
-            //console.log(id);
-            navigate("/completed/"+id);
-        })
-        .catch((error) => {
-            //console.log(error);
-        })
+            .then(({ id }) => {
+                navigate("/completed/" + id);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     function handdleSwitch() {
         setEnvio(!envio);
     }
 
-    function validarCampos(){
+    function validarCampos() {
         console.log(form);
-        if(form.name.length < 3 ){
-            setFormOk({state: false, message: "El nombre debe contar con más de 3 letras."});
+        if (form.name.length < 3) {
+            setFormOk({ state: false, message: "El nombre debe contar con más de 3 letras." });
             return false
         }
-        if(form.phone === null || form.phone === '' ){
-            setFormOk({state: false, message: "Debe ingresar un número de teléfono válido."});
+        if (form.phone === null || form.phone === '') {
+            setFormOk({ state: false, message: "Debe ingresar un número de teléfono válido." });
             return false
         }
-        const email = form.email.match( 
+        const email = form.email.match(
             /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         );
         // console.log(email);
-        if(email === null){
-            setFormOk({state: false, message: "Debe ingresar un correo electrónico válido."});
+        if (email === null) {
+            setFormOk({ state: false, message: "Debe ingresar un correo electrónico válido." });
             return false
         }
-        if(envio && form.adress === ''){
-            setFormOk({state: false, message: "Debe ingresar una dirección válida."});
+        if (envio && form.adress === '') {
+            setFormOk({ state: false, message: "Debe ingresar una dirección válida." });
             return false
         }
 
-        setFormOk({state: true, message: ""});
+        setFormOk({ state: true, message: "" });
         return true;
     }
-    
+
     function handleInputChange(event) {
         const target = event.target;
         const value = target.value;
         const name = target.name;
 
-        // console.log(target, value, name)
         setForm(prevState => ({
             ...prevState,    // keep all other key-value pairs
             [name]: value       // update the value of specific key
         }));
 
-        
+
 
     }
     useEffect(() => {
@@ -138,26 +136,24 @@ export default function Checkout() {
                                     <table>
                                         <tbody>
                                             <tr>
-                                                {/* */}
                                                 <td colspan="4" className='td-total'>
-                                                    {/* .toFixed(2) */}
                                                     <div className="alert alert-success" role="alert">
-                                                    Total: <strong>${cart && totalPagar > 0 && totalPagar}</strong>
+                                                        Total: <strong>${cart && totalPagar > 0 && totalPagar}</strong>
                                                     </div>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                
+
                                     <form className='p-3'>
                                         <div className="row">
                                             <div className="col-sm-6">
                                                 <h4>Información del Cliente</h4>
                                                 <div className="form-text mb-3">* Campos Requeridos</div>
-                                                {!formOk.state && 
-                                                <div className="alert alert-warning" role="alert">
-                                                    {formOk.message}
-                                                </div>
+                                                {!formOk.state &&
+                                                    <div className="alert alert-warning" role="alert">
+                                                        {formOk.message}
+                                                    </div>
                                                 }
                                                 <div className="mb-3">
                                                     <label htmlFor="name" className="form-label">Nombre y Apellido *</label>
@@ -219,16 +215,16 @@ export default function Checkout() {
                                                             </div>
                                                     }
                                                 </div>
-                                               
+
                                             </div>
 
-                                          
+
                                         </div>
                                     </form>
                                     <div className='w-100 text-center'>
-                                                    <button className="btn btn-primary btn-sm" onClick={() => finalizarCompra()}
-                                                    >Concretar Compra</button>
-                                                </div>
+                                        <button className="btn btn-primary btn-sm" onClick={() => finalizarCompra()}
+                                        >Concretar Compra</button>
+                                    </div>
                                 </div>
                                 :
                                 <div className='card text-center p-5 m-5 text-dark'>

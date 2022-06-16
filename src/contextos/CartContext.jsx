@@ -16,7 +16,6 @@ export default function CartContext({ children }) {
             setCart([...cart, item]);
         }
         setCantidadItems(Number(cantidadItems) + Number(cant));
-        // console.log('luego de agregar ', cart)
     }
 
     function calcularTotal(){
@@ -37,7 +36,6 @@ export default function CartContext({ children }) {
     }
 
     function quitarIndex(index) {
-            // console.log('splice: ', cart.splice(index, 1))
             cart.splice(index, 1)
             setCart([...cart]);
             //setCart(cart); // si hago esto el carro queda con un elemento menos, pero no cambia el context, por lo tanto no se rerenderiza el componente Cart ni widgetCartList (no sé por qué sucede)

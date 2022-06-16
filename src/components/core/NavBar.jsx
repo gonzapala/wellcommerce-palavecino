@@ -13,7 +13,6 @@ export default class Navbar extends Component {
     static contextType = categoriasContext;
     render() {
         const categorias = this.context.categorias;
-        //console.log('context: ', this.context.categorias)
         return (
             <>
                 <nav className="nav">

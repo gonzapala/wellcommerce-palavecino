@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { cartContext } from '../../contextos/CartContext';
 import ItemCount from '../product/ItemCount';
 import './ItemDetail.css';
-// import Image from 'material-ui-image'
 
 export default function ItemDetail({ item }) {
     const { agregarAlcarro } = useContext(cartContext);
@@ -13,15 +12,12 @@ export default function ItemDetail({ item }) {
 
     //setea la cantidad seleccionada del producto
     function onAdd(cant) {
-        //console.log('onAdd ', cant)
         setCount(cant);
         setAgregado(true);
         agregarAlcarro(item, cant)
     }
 
     function handleRemove() {
-        // setCount(0)
-        // onAdd(0);
         setAgregado(false);
     }
     return (

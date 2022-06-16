@@ -26,7 +26,6 @@ export default function ItemDetailContainer() {
         getDoc(queryFirestore).then((producto) => {
             if (producto) {
 				setItem({ id: producto.id, ...producto.data() });
-				// console.log('document: ', item)
 			} else {
 				throw new Error('Ocurrió un error.')
 			}

@@ -17,7 +17,6 @@ export default function CategoriasContext({ children }) {
     getDocs(queryFirestore).then(({ docs }) => {
         if (docs) {
             setCategorias(docs.map((item) => ({ id: item.id, ...item.data() })));
-            //console.log('categoriasContext: ', categorias)
         } else {
             throw new Error('Ocurrió un error.')
         }

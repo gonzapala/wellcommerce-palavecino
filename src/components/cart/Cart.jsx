@@ -16,7 +16,6 @@ export default function Cart() {
 
 	useEffect(() => {
 		setLoading(true);
-		// console.log('cart al montar component: ', cart)
 		setTimeout(() => {
 			setTotalPagar(calcularTotal());
 			setLoading(false);
@@ -25,7 +24,6 @@ export default function Cart() {
 	}, [])
 
 	useEffect(() => {
-		// console.log('cambio de cart')
 		setTotalPagar(calcularTotal());
 	}, [cart])
 
@@ -43,9 +41,7 @@ export default function Cart() {
 									<table>
 										<tbody>
 											<tr>
-												{/* */}
 												<td colspan="4" className='td-total'>
-													{/* .toFixed(2) */}
 													Total: <strong>${cart && totalPagar > 0 && totalPagar}</strong>
 												</td>
 											</tr>
