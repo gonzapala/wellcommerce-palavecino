@@ -30,6 +30,20 @@ function App() {
 			</BrowserRouter>
 		</CartContext>
 		</CategoriasContext>
+<script
+                type="text/javascript"
+                src="//media.flixfacts.com/js/loader.js"
+                data-flix-distributor="4780"
+                data-flix-language="f4"
+                data-flix-brand="SAMSUNG"
+                data-flix-mpn="UN43T5300AGCZB"
+                data-flix-ean="8806090484377"
+                data-flix-sku=""
+                data-flix-button="flix-minisite"
+                data-flix-inpage="flix-inpage"
+                data-flix-button-image=""
+                data-flix-fallback-language=""
+                data-flix-price=""></script>
 		</>
 	);
 }
