@@ -6,6 +6,7 @@ export default function ItemList({ items }) {
 
     return (
         <>
+         <div id="flix-inpage"></div>
             {listado &&
                 listado.length === 0 ? <p className="text-light text-center">No se encontró ningún producto.</p> :
                 listado.map((item) => (
